@@ -11,3 +11,5 @@ Proyecto básico de registro de libros (CRUD)
 * String Data JPA
 * API REST
 * Docker
+
+> Repositorio del frontend -> https://github.com/jr20d/frontend-libros
