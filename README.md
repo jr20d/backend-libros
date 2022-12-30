@@ -1,5 +1,7 @@
 # Backend Libros (monorepo)
 
+Proyecto básico de registro de libros (CRUD)
+
 ## Herramientas
 * Spring Boot 2+
 * Spring Cloud
