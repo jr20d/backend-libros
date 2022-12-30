@@ -1,0 +1,35 @@
+server:
+  port: ${PORT:8090}
+  error:
+    include-binding-errors: always
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+      - id: msvc-libros
+        uri: lb://msvc-libros
+        predicates:
+        - Path=/api/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods: "*"
+            #allowed-headers: "*"
+            #allow-credentials: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_USERNAME:eureka}:${EUREKA_PASSWORD:password}@${EUREKA_SERVER:localhost}:${EUREKA_PORT:9092}/eureka
+
+logging:
+  file:
+    path: /app/logs
+  level:
+    '[org.hibernate.sql]': debug

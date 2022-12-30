@@ -1,0 +1,17 @@
+eureka:
+  username: ${EUREKA_USERNAME:eureka}
+  password: ${EUREKA_PASSWORD:password}
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    
+spring:
+  application:
+    name: discovery
+
+server:
+  port: ${PORT:9092}
+  error:
+    include-binding-errors: always

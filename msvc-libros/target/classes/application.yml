@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:8000}
+  error:
+    include-binding-errors: always
+
+spring:
+  application:
+    name: msvc-libros
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost:3306}/${NAME_DATABASE:db_libros}?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=America/El_Salvador
+    username: ${DB_LIBROS_USERNAME:root}
+    password: ${DB_LIBROS_PASSWORD:sasa}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    generate-dll: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_USERNAME:eureka}:${EUREKA_PASSWORD:password}@${EUREKA_SERVER:localhost}:${EUREKA_PORT:9092}/eureka
+
+logging:
+  file:
+    path: /app/logs
+  level:
+    '[org.hibernate.sql]': debug
